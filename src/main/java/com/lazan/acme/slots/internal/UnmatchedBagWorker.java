@@ -6,6 +6,9 @@ import com.lazan.acme.slots.Bag;
 import com.lazan.acme.slots.CashCounterOutputListener;
 import com.lazan.acme.slots.CashCounterRepository;
 
+/**
+ * Asynchronous task to alert the UI of unmatched bags
+ */
 public class UnmatchedBagWorker implements Runnable {
 	private final long maxUnmatchedPeriod;
 	private final CashCounterRepository repository;
@@ -21,7 +24,7 @@ public class UnmatchedBagWorker implements Runnable {
 	@Override
 	public void run() {
 		Date minDate = new Date(System.currentTimeMillis() - maxUnmatchedPeriod);
-		for (Bag bag : repository.getUnmatchedBagsBefore(minDate)) {
+		for (Bag bag : repository.findUnmatchedBagsBefore(minDate)) {
 			outputListener.bagNotMatched(bag.getBagId(), bag.getTotal());
 		}
 	}

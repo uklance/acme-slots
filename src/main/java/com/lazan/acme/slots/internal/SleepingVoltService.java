@@ -6,6 +6,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.lazan.acme.slots.Bag;
 import com.lazan.acme.slots.VoltService;
 
+/**
+ * Simulates the Volt WebService by sleeping before assigning a volt id.
+ */
 public class SleepingVoltService implements VoltService {
 	private final AtomicInteger nextIncrement = new AtomicInteger(1);
 	

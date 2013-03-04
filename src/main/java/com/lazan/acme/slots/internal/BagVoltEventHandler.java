@@ -35,7 +35,7 @@ public class BagVoltEventHandler implements EventHandler<InputEvent> {
 
 	@Override
 	public void onEvent(InputEvent event, long sequence, boolean endOfBatch) throws Exception {
-		if (event.getType() == InputEventType.END_BAG) {
+		if (event.getType() == InputEventType.BAG_END) {
 			Bag bag = repository.getBag(event.getBagId());
 			Set<Bag> unmatchedSet = bag.getType() == DenominationType.NOTE ? unmatchedNoteBags : unmatchedCoinBags;
 			unmatchedSet.add(bag);

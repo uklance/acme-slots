@@ -1,5 +1,8 @@
 package com.lazan.acme.slots;
 
+/**
+ * Represents a denomination of currency
+ */
 public enum Denomination {
 	NOTE_1(100, DenominationType.NOTE),
 	NOTE_10(10 * 100, DenominationType.NOTE),

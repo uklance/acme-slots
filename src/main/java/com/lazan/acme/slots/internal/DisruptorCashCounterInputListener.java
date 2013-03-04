@@ -7,6 +7,9 @@ import com.lazan.acme.slots.InputEvent;
 import com.lazan.acme.slots.InputEventType;
 import com.lmax.disruptor.RingBuffer;
 
+/**
+ * CashCounterInputListener implementation backed by LMAX's disruptor framework
+ */
 public class DisruptorCashCounterInputListener implements CashCounterInputListener {
 	private final RingBuffer<InputEvent> ringBuffer;
 	private final CashCounterRepository repository;
@@ -20,7 +23,7 @@ public class DisruptorCashCounterInputListener implements CashCounterInputListen
 	@Override
 	public void startBag(String bagId) {
 		repository.inputAudit("START " + bagId);
-		publish(InputEventType.START_BAG, bagId, null);
+		publish(InputEventType.BAG_START, bagId, null);
 	}
 
 	@Override
@@ -32,7 +35,7 @@ public class DisruptorCashCounterInputListener implements CashCounterInputListen
 	@Override
 	public void endBag(String bagId) {
 		repository.inputAudit("END " + bagId);
-		publish(InputEventType.END_BAG, bagId, null);
+		publish(InputEventType.BAG_END, bagId, null);
 	}
 	
 	protected void publish(InputEventType type, String bagId, Denomination denomination) {

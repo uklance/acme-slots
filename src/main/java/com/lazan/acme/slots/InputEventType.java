@@ -1,7 +1,7 @@
 package com.lazan.acme.slots;
 
 public enum InputEventType {
-	START_BAG,
+	BAG_START,
 	BAG_ENTRY,
-	END_BAG;
+	BAG_END;
 }

@@ -10,6 +10,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.lazan.acme.slots.Bag;
 import com.lazan.acme.slots.CashCounterRepository;
 
+/**
+ * Simple in-memory repository
+ */
 public class InMemoryCashCounterRepository implements CashCounterRepository {
 	private Map<String, Bag> bags = new ConcurrentHashMap<String, Bag>();
 	private AtomicInteger nextBagIncrement = new AtomicInteger(1);
@@ -43,7 +46,7 @@ public class InMemoryCashCounterRepository implements CashCounterRepository {
 	 * Not too important since it's called offline in a scheduled task
 	 */
 	@Override
-	public Iterable<Bag> getUnmatchedBagsBefore(Date date) {
+	public Iterable<Bag> findUnmatchedBagsBefore(Date date) {
 		List<Bag> unmatched = new ArrayList<Bag>();
 		for (Bag bag : bags.values()) {
 			if (!bag.getState().isMatched() && bag.getCreated().before(date)) {

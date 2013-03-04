@@ -30,7 +30,7 @@ public class BagTotalEventHandler implements EventHandler<InputEvent> {
 	public void onEvent(InputEvent event, long sequence, boolean endOfBatch) throws Exception {
 		switch (event.getType()) {
 			case BAG_ENTRY : onBagEntry(event); break;
-			case END_BAG : onEndBag(event); break;
+			case BAG_END : onEndBag(event); break;
 		}
 	}
 
