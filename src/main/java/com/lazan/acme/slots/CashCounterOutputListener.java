@@ -2,7 +2,7 @@ package com.lazan.acme.slots;
 
 
 public interface CashCounterOutputListener {
-	public void runningTotal(DenominationType denominationType, Integer runningTotalCents);
-	public void bagNotMatched(String bagId, Integer bagTotalCents);
-	public void bagVolt(String bagId, String voltId);
+	public void runningTotal(DenominationType denominationType, int total);
+	public void bagNotMatched(String bagId, int bagTotal);
+	public void voltAssigned(String bagId, String voltId);
 }

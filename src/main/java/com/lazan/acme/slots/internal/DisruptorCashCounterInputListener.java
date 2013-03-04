@@ -25,7 +25,7 @@ public class DisruptorCashCounterInputListener implements CashCounterInputListen
 
 	@Override
 	public void bagEntry(String bagId, Denomination denomination) {
-		repository.inputAudit("ENTRY " + denomination.name());
+		repository.inputAudit(String.format("ENTRY %s %s", bagId, denomination.name()));
 		publish(InputEventType.BAG_ENTRY, bagId, denomination);
 	}
 	

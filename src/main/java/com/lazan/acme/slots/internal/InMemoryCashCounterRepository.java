@@ -21,6 +21,7 @@ public class InMemoryCashCounterRepository implements CashCounterRepository {
 	
 	@Override
 	public void persistBag(Bag bag) {
+		//System.out.println(String.format("PERSIST %s %s %s %s %s", bag.getBagId(), bag.getType(), bag.getTotal(), bag.getState(), bag.getVoltId()));
 		if (bag.getBagId() == null) {
 			String bagId = "B" + nextBagIncrement.getAndIncrement();
 			bag.setBagId(bagId);
@@ -38,7 +39,8 @@ public class InMemoryCashCounterRepository implements CashCounterRepository {
 	}
 	
 	/**
-	 * TODO: The complexity of this is currently O(n). Not too important since it's called offline in a scheduled task
+	 * TODO: The complexity of this is currently O(n).
+	 * Not too important since it's called offline in a scheduled task
 	 */
 	@Override
 	public Iterable<Bag> getUnmatchedBagsBefore(Date date) {

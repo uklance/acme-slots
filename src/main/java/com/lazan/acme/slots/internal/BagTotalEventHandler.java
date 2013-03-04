@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.lazan.acme.slots.Bag;
+import com.lazan.acme.slots.BagState;
 import com.lazan.acme.slots.CashCounterOutputListener;
 import com.lazan.acme.slots.CashCounterRepository;
 import com.lazan.acme.slots.DenominationType;
@@ -49,6 +50,7 @@ public class BagTotalEventHandler implements EventHandler<InputEvent> {
 			tempBag.setBagId(bagId);
 			tempBag.setTotal(0);
 			tempBag.setType(event.getDenomination().getType());
+			tempBag.setState(BagState.RECEIVED);
 			tempBags.put(bagId,  tempBag);
 		}
 		tempBag.setTotal(tempBag.getTotal() + event.getDenomination().getCentValue());
