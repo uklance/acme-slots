@@ -91,6 +91,7 @@ public class CashCounterIntegrationTest {
 	@Test
 	public void testUnmatched() {
 		sendBag("B1", Denomination.NOTE_1);
+		sleep(50);
 		assertTrue(unmatchedBagIds.isEmpty());
 		sleep(2000);
 
